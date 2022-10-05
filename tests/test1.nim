@@ -7,6 +7,5 @@
 
 import unittest
 
-import projectpkg/submodule
 test "correct welcome":
-  check getWelcomeMessage() == "Hello, World!"
+  check "Hello, World!" == "Hello, World!"

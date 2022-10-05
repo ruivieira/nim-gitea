@@ -6,7 +6,7 @@ description   = "Project Description"
 license       = "Apache-2.0"
 srcDir        = "src"
 installExt    = @["nim"]
-bin           = @["project"]
+bin           = @["gitea"]
 
 
 # Dependencies
