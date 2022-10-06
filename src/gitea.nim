@@ -80,7 +80,7 @@ proc buildGETRequest(gitea: Gitea, url: string): Response =
     let headers = newHttpHeaders()
     headers["Authorization"] = "token " & gitea.token
     headers["Accept"] = "application/json"
-    let response = request(gitea.client, url, "GET", "", headers)
+    let response = request(gitea.client, url, HttpMethod.HttpGet, "", headers)
     return response
 
 proc issuesGetAll*(gitea: Gitea, state: string): seq[GiteaIssue] =
