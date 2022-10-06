@@ -83,16 +83,17 @@ proc buildGETRequest(gitea: Gitea, url: string): Response =
     let response = request(gitea.client, url, HttpMethod.HttpGet, "", headers)
     return response
 
-proc issuesGetAll*(gitea: Gitea, state: string): seq[GiteaIssue] =
-    let limit = 200
-    var results = newSeq[GiteaIssue]()
-    let url = gitea.host & "/repos/issues/search?owner=" & gitea.owner &
-            "&limit=" & $limit
+proc getAll[T](gitea: Gitea, url: string): seq[T] =
+    var results = newSeq[T]()
     let response = buildGETRequest(gitea, url)
     let json = parseJson(response.body)
     for item in json:
-        results.add(to(item, GiteaIssue))
+        results.add(to(item, T))
     return results
 
-
-
+proc getAllIssues*(gitea: Gitea, state: string): seq[GiteaIssue] =
+    let limit = 200
+    let url = gitea.host & "/repos/issues/search?owner=" & gitea.owner &
+            "&limit=" & $limit
+    let issues = getAll[GiteaIssue](gitea, url)
+    return issues
