@@ -12,6 +12,7 @@ bin           = @["gitea"]
 # Dependencies
 
 requires "nim >= 1.6.6"
+requires "jsony"
 
 task docs, "Generate project docs":
     exec "nim doc --project --index:on  --outdir:docs src/gitea.nim"

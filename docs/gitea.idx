@@ -1,0 +1,11 @@
+GiteaUser	gitea.html#GiteaUser	gitea: GiteaUser	
+GiteaLabel	gitea.html#GiteaLabel	gitea: GiteaLabel	
+GiteaRepository	gitea.html#GiteaRepository	gitea: GiteaRepository	
+GiteaIssue	gitea.html#GiteaIssue	gitea: GiteaIssue	
+GiteaCreateIssue	gitea.html#GiteaCreateIssue	gitea: GiteaCreateIssue	
+camel2snake	gitea.html#camel2snake,string	gitea: camel2snake(s: string): string	
+dumpHook	gitea.html#dumpHook,string,GiteaCreateIssue	gitea: dumpHook(s: var string; v: GiteaCreateIssue)	
+newGitea	gitea.html#newGitea,string,string	gitea: newGitea(token: string; owner: string): Gitea	
+newGitea	gitea.html#newGitea,string,string,string	gitea: newGitea(token: string; owner: string; host: string): Gitea	
+createIssue	gitea.html#createIssue,Gitea,GiteaCreateIssue,string	gitea: createIssue(gitea: Gitea; issue: GiteaCreateIssue; repo: string): Response	
+getAllIssues	gitea.html#getAllIssues,Gitea,string	gitea: getAllIssues(gitea: Gitea; state: string): seq[GiteaIssue]	
