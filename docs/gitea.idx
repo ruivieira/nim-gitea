@@ -1,5 +1,10 @@
 GiteaUser	gitea.html#GiteaUser	gitea: GiteaUser	
 GiteaLabel	gitea.html#GiteaLabel	gitea: GiteaLabel	
+GiteaSimpleRepository	gitea.html#GiteaSimpleRepository	gitea: GiteaSimpleRepository	
+GiteaExternalWiki	gitea.html#GiteaExternalWiki	gitea: GiteaExternalWiki	
+GiteaExternalTracker	gitea.html#GiteaExternalTracker	gitea: GiteaExternalTracker	
+GiteaInternalTracker	gitea.html#GiteaInternalTracker	gitea: GiteaInternalTracker	
+GiteaPermission	gitea.html#GiteaPermission	gitea: GiteaPermission	
 GiteaRepository	gitea.html#GiteaRepository	gitea: GiteaRepository	
 GiteaIssue	gitea.html#GiteaIssue	gitea: GiteaIssue	
 GiteaCreateIssue	gitea.html#GiteaCreateIssue	gitea: GiteaCreateIssue	
@@ -9,3 +14,4 @@ newGitea	gitea.html#newGitea,string,string	gitea: newGitea(token: string; owner:
 newGitea	gitea.html#newGitea,string,string,string	gitea: newGitea(token: string; owner: string; host: string): Gitea	
 createIssue	gitea.html#createIssue,Gitea,GiteaCreateIssue,string	gitea: createIssue(gitea: Gitea; issue: GiteaCreateIssue; repo: string): Response	
 getAllIssues	gitea.html#getAllIssues,Gitea,string	gitea: getAllIssues(gitea: Gitea; state: string): seq[GiteaIssue]	
+getUserRepos	gitea.html#getUserRepos,Gitea	gitea: getUserRepos(gitea: Gitea): seq[GiteaRepository]	

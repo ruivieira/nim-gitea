@@ -64,6 +64,16 @@
   milestone*: Option[int]
   `ref`*: Option[string]
   title*: string">GiteaCreateIssue</a></li>
+<li><a class="reference" href="#GiteaExternalTracker" title="GiteaExternalTracker = object
+  external_tracker_format*: string
+  external_tracker_style*: string
+  external_tracker_url*: string">GiteaExternalTracker</a></li>
+<li><a class="reference" href="#GiteaExternalWiki" title="GiteaExternalWiki = object
+  external_wiki_url*: string">GiteaExternalWiki</a></li>
+<li><a class="reference" href="#GiteaInternalTracker" title="GiteaInternalTracker = object
+  allow_only_contributors_to_track_time*: bool
+  enable_issue_dependencies*: bool
+  enable_time_tracker*: bool">GiteaInternalTracker</a></li>
 <li><a class="reference" href="#GiteaIssue" title="GiteaIssue = object
   id*: int
   url*: string
@@ -87,18 +97,66 @@
   `closed_at`*: string
   `due_date`*: string
   `pull_request`*: string
-  repository*: GiteaRepository">GiteaIssue</a></li>
+  repository*: GiteaSimpleRepository">GiteaIssue</a></li>
 <li><a class="reference" href="#GiteaLabel" title="GiteaLabel = object
   id*: int
   name*: string
   color*: string
   description*: string
   url*: string">GiteaLabel</a></li>
+<li><a class="reference" href="#GiteaPermission" title="GiteaPermission = object
+  admin*: bool
+  pull*: bool
+  push*: bool">GiteaPermission</a></li>
 <li><a class="reference" href="#GiteaRepository" title="GiteaRepository = object
+  `allow_merge_commits *`: bool
+  `allow_rebase *`: bool
+  `allow_rebase_explicit *`: bool
+  `allow_squash_merge *`: bool
+  archived*: bool
+  avatar_url*: string
+  clone_url*: string
+  created_at*: string
+  default_branch*: string
+  default_merge_style*: string
+  description*: string
+  empty*: bool
+  external_tracker*: GiteaExternalTracker
+  external_wiki*: GiteaExternalWiki
+  fork*: bool
+  forks_count*: int
+  full_name*: string
+  has_issues*: bool
+  has_projects*: bool
+  has_pull_requests*: bool
+  has_wiki*: bool
+  html_url*: string
+  id*: int
+  ignore_whitespace_conflicts*: bool
+  internal*: bool
+  internal_tracker*: GiteaInternalTracker
+  mirror*: bool
+  mirror_interval*: string
+  name*: string
+  open_issues_count*: int
+  open_pr_counter*: int
+  original_url*: string
+  owner*: GiteaUser
+  permissions*: GiteaPermission
+  private*: bool
+  release_counter*: int
+  size*: int
+  ssh_url*: string
+  stars_count*: int
+  `template`*: bool
+  updated_at*: string
+  watchers_count*: int
+  website*: string">GiteaRepository</a></li>
+<li><a class="reference" href="#GiteaSimpleRepository" title="GiteaSimpleRepository = object
   id*: int
   name*: string
   owner*: string
-  `full_name`*: string">GiteaRepository</a></li>
+  `full_name`*: string">GiteaSimpleRepository</a></li>
 <li><a class="reference" href="#GiteaUser" title="GiteaUser = object
   id*: int
   login*: string
@@ -144,6 +202,10 @@
   <li><a class="reference" href="#getAllIssues%2CGitea%2Cstring" title="getAllIssues(gitea: Gitea; state: string): seq[GiteaIssue]">getAllIssues(gitea: Gitea; state: string): seq[GiteaIssue]</a></li>
 
 </ul>
+<ul class="simple nested-toc-section">getUserRepos
+  <li><a class="reference" href="#getUserRepos%2CGitea" title="getUserRepos(gitea: Gitea): seq[GiteaRepository]">getUserRepos(gitea: Gitea): seq[GiteaRepository]</a></li>
+
+</ul>
 <ul class="simple nested-toc-section">newGitea
   <li><a class="reference" href="#newGitea%2Cstring%2Cstring" title="newGitea(token: string; owner: string): Gitea">newGitea(token: string; owner: string): Gitea</a></li>
 <li><a class="reference" href="#newGitea%2Cstring%2Cstring%2Cstring" title="newGitea(token: string; owner: string; host: string): Gitea">newGitea(token: string; owner: string; host: string): Gitea</a></li>
@@ -182,6 +244,40 @@
     
   </dd>
 </div>
+<div id="GiteaExternalTracker">
+  <dt><pre><a href="gitea.html#GiteaExternalTracker"><span class="Identifier">GiteaExternalTracker</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+  <span class="Identifier">external_tracker_format</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
+  <span class="Identifier">external_tracker_style</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
+  <span class="Identifier">external_tracker_url</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
+</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="GiteaExternalWiki">
+  <dt><pre><a href="gitea.html#GiteaExternalWiki"><span class="Identifier">GiteaExternalWiki</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+  <span class="Identifier">external_wiki_url</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
+</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="GiteaInternalTracker">
+  <dt><pre><a href="gitea.html#GiteaInternalTracker"><span class="Identifier">GiteaInternalTracker</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+  <span class="Identifier">allow_only_contributors_to_track_time</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
+  <span class="Identifier">enable_issue_dependencies</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
+  <span class="Identifier">enable_time_tracker</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
+</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
 <div id="GiteaIssue">
   <dt><pre><a href="gitea.html#GiteaIssue"><span class="Identifier">GiteaIssue</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">id</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int</span>
@@ -206,7 +302,7 @@
   <span class="Other">`</span><span class="Identifier">closed_at</span><span class="Other">`</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
   <span class="Other">`</span><span class="Identifier">due_date</span><span class="Other">`</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
   <span class="Other">`</span><span class="Identifier">pull_request</span><span class="Other">`</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
-  <span class="Identifier">repository</span><span class="Operator">*</span><span class="Other">:</span> <a href="gitea.html#GiteaRepository"><span class="Identifier">GiteaRepository</span></a>
+  <span class="Identifier">repository</span><span class="Operator">*</span><span class="Other">:</span> <a href="gitea.html#GiteaSimpleRepository"><span class="Identifier">GiteaSimpleRepository</span></a>
 </pre></dt>
   <dd>
     
@@ -228,8 +324,72 @@
     
   </dd>
 </div>
+<div id="GiteaPermission">
+  <dt><pre><a href="gitea.html#GiteaPermission"><span class="Identifier">GiteaPermission</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+  <span class="Identifier">admin</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
+  <span class="Identifier">pull</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
+  <span class="Identifier">push</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
+</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
 <div id="GiteaRepository">
   <dt><pre><a href="gitea.html#GiteaRepository"><span class="Identifier">GiteaRepository</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+  <span class="Other">`</span><span class="Identifier">allow_merge_commits</span> <span class="Operator">*</span><span class="Other">`</span><span class="Other">:</span> <span class="Identifier">bool</span>
+  <span class="Other">`</span><span class="Identifier">allow_rebase</span> <span class="Operator">*</span><span class="Other">`</span><span class="Other">:</span> <span class="Identifier">bool</span>
+  <span class="Other">`</span><span class="Identifier">allow_rebase_explicit</span> <span class="Operator">*</span><span class="Other">`</span><span class="Other">:</span> <span class="Identifier">bool</span>
+  <span class="Other">`</span><span class="Identifier">allow_squash_merge</span> <span class="Operator">*</span><span class="Other">`</span><span class="Other">:</span> <span class="Identifier">bool</span>
+  <span class="Identifier">archived</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
+  <span class="Identifier">avatar_url</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
+  <span class="Identifier">clone_url</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
+  <span class="Identifier">created_at</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
+  <span class="Identifier">default_branch</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
+  <span class="Identifier">default_merge_style</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
+  <span class="Identifier">description</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
+  <span class="Identifier">empty</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
+  <span class="Identifier">external_tracker</span><span class="Operator">*</span><span class="Other">:</span> <a href="gitea.html#GiteaExternalTracker"><span class="Identifier">GiteaExternalTracker</span></a>
+  <span class="Identifier">external_wiki</span><span class="Operator">*</span><span class="Other">:</span> <a href="gitea.html#GiteaExternalWiki"><span class="Identifier">GiteaExternalWiki</span></a>
+  <span class="Identifier">fork</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
+  <span class="Identifier">forks_count</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int</span>
+  <span class="Identifier">full_name</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
+  <span class="Identifier">has_issues</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
+  <span class="Identifier">has_projects</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
+  <span class="Identifier">has_pull_requests</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
+  <span class="Identifier">has_wiki</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
+  <span class="Identifier">html_url</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
+  <span class="Identifier">id</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int</span>
+  <span class="Identifier">ignore_whitespace_conflicts</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
+  <span class="Identifier">internal</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
+  <span class="Identifier">internal_tracker</span><span class="Operator">*</span><span class="Other">:</span> <a href="gitea.html#GiteaInternalTracker"><span class="Identifier">GiteaInternalTracker</span></a>
+  <span class="Identifier">mirror</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
+  <span class="Identifier">mirror_interval</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
+  <span class="Identifier">name</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
+  <span class="Identifier">open_issues_count</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int</span>
+  <span class="Identifier">open_pr_counter</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int</span>
+  <span class="Identifier">original_url</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
+  <span class="Identifier">owner</span><span class="Operator">*</span><span class="Other">:</span> <a href="gitea.html#GiteaUser"><span class="Identifier">GiteaUser</span></a>
+  <span class="Identifier">permissions</span><span class="Operator">*</span><span class="Other">:</span> <a href="gitea.html#GiteaPermission"><span class="Identifier">GiteaPermission</span></a>
+  <span class="Identifier">private</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
+  <span class="Identifier">release_counter</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int</span>
+  <span class="Identifier">size</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int</span>
+  <span class="Identifier">ssh_url</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
+  <span class="Identifier">stars_count</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int</span>
+  <span class="Other">`</span><span class="Keyword">template</span><span class="Other">`</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
+  <span class="Identifier">updated_at</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
+  <span class="Identifier">watchers_count</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int</span>
+  <span class="Identifier">website</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
+</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="GiteaSimpleRepository">
+  <dt><pre><a href="gitea.html#GiteaSimpleRepository"><span class="Identifier">GiteaSimpleRepository</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">id</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int</span>
   <span class="Identifier">name</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
   <span class="Identifier">owner</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
@@ -327,6 +487,20 @@
 </div>
 
 </div>
+<div id="getUserRepos-procs-all">
+  <div id="getUserRepos,Gitea">
+  <dt><pre><span class="Keyword">proc</span> <a href="#getUserRepos%2CGitea"><span class="Identifier">getUserRepos</span></a><span class="Other">(</span><span class="Identifier">gitea</span><span class="Other">:</span> <span class="Identifier">Gitea</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="gitea.html#GiteaRepository"><span class="Identifier">GiteaRepository</span></a><span class="Other">]</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">,</span>
+    <span class="Identifier">HttpRequestError</span><span class="Other">,</span> <span class="Identifier">LibraryError</span><span class="Other">,</span> <span class="Identifier">Exception</span><span class="Other">,</span> <span class="Identifier">OSError</span><span class="Other">,</span> <span class="Identifier">SslError</span><span class="Other">,</span> <span class="Identifier">IOError</span><span class="Other">,</span>
+    <span class="Identifier">TimeoutError</span><span class="Other">,</span> <span class="Identifier">ProtocolError</span><span class="Other">,</span> <span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">JsonError</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">,</span> <span class="Identifier">ReadIOEffect</span><span class="Other">,</span> <span class="Identifier">WriteIOEffect</span><span class="Other">,</span> <span class="Identifier">TimeEffect</span><span class="Other">]</span><span class="Other">,</span> </span><span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span>.}</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+
+</div>
 <div id="newGitea-procs-all">
   <div id="newGitea,string,string">
   <dt><pre><span class="Keyword">proc</span> <a href="#newGitea%2Cstring%2Cstring"><span class="Identifier">newGitea</span></a><span class="Other">(</span><span class="Identifier">token</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">owner</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Gitea</span> {.
@@ -360,7 +534,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2022-10-06 20:55:15 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2022-10-15 20:38:27 UTC</small>
       </div>
     </div>
   </div>
